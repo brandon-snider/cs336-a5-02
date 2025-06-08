@@ -20,7 +20,7 @@
 #show: ilm.with(
   title: [CS 336: Assignment 5],
   author: "Brandon Snider",
-  date: datetime(year: 2025, month: 06, day: 03),
+  date: datetime(year: 2025, month: 06, day: 06),
   figure-index: (enabled: true),
   table-index: (enabled: true),
   listing-index: (enabled: true),
@@ -131,7 +131,7 @@ See `log_generations` in `cs336_alignment/utils.py`
 
 + #figure(image("images/sft-exp-mixed.png"), caption: "SFT validation accurary curves, varying unique examples (correct and incorrect)")
 
-+ Number of unique correct examples: *1308*
++ Number of unique correct examples: *1,308*
 
   Below I show (i) the validation accuracy curve when training on only correct examples, and (ii) all validation accuracy curves plotted together.
 
@@ -280,3 +280,20 @@ The question-only prompt significantly outperforms the R1-Zero prompt. The answe
 Training with the question-only prompt also seems much more stable. Gradient norms are much smaller, entropy shrinks very slowly (rather than spiking and/or collapsing), and the loss remains relatively stable throughout training.
 
 #figure(image("images/grpo-question-only.png"), caption: "GRPO prompt ablation: validation accuracy")
+
+== Problem (`leaderboard`): 16 points
+
+#link("https://api.wandb.ai/links/brandon-snider-stanford-university/n8t743my", "WandB Report")
+
+I swept over various combinations of loss types and baselines with and without std. dev. normalization, tuning learning rates in each case to try to get stability.
+
+I found the best results with:
+
+- Loss: `reinforce_with_baseline`
+- Baseline: constant normalization by 1,024 (max. response length)
+- Learning rate: `2e-5`
+- Std. dev. normalization: `true`
+
+Final validation accuracy: *48%*
+
+#figure(image("images/leaderboard.png"), caption: "GRPO leaderboard run: validation accuracy")

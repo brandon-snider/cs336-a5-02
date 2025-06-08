@@ -29,6 +29,9 @@ zip -r "$output_file" . \
     -x '*.pt' \
     -x '*.pth' \
     -x '*.safetensors' \
-    -x ./data/\*
+    -x ./data/\* \
+    -x ./wandb/\* \
+    -x '*.ipynb' \
+    -x '*.pdf'
 
 echo "All files have been compressed into $output_file"
