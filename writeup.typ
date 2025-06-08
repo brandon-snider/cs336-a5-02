@@ -36,6 +36,16 @@
     stroke: (0.5pt + stroke-color),
 )
 
+= 1 Note on Grader Issues
+
+I had some difficulty with the `r1_zero_reward_fn` throughout the assignment.
+
+I started working on the assignment as soon as it was released, and had to change some package versions to get it working before the handout was updated.
+
+After having a lot of issues getting stable training with the `grpo_clip` loss function (in particular, struggling to get the policy to stick to the answer format), and noticing that I was getting worse performance than others seemed to be, I re-cloned the most recent version of the handout and re-installed everything. I saw an immediate 50% bump on step 0 rewards, which makes me think there was an issue with the grader.
+
+Unfortunately, by the time I realized this I didn't have the time to re-run all the experiments. The experiments and observations below are what I discovered with the grader as it was from the first installation.
+
 = 3 Measuring Zero-Shot MATH Performance
 
 == Problem (`math_baseline`): 4 points
@@ -205,6 +215,8 @@ Example rollout from step 50 (correct format, correct answer):
 {"prompt":"A conversation between User and Assistant. The User asks a question, and the Assistant solves it. The Assistant first thinks about the reasoning process in the mind and then provides the User with the answer. The reasoning process is enclosed within <think> </think> and answer is enclosed within <answer> </answer> tags, respectively, i.e., <think> reasoning process here </think> <answer> answer here </answer>.\nUser: An assortment of 200 pencils is sold through a catalog for $\\$19.90$. Shipping is an additional $\\$6.95$. Including the charges for both the pencils and the shipping, what is the average cost, in cents, for each pencil? Express your answer rounded to the nearest whole number.\nAssistant: <think>","completion":"The cost for the pencils is \\$19.90 for 200 pencils, which is a cost of \\$0.0995 per pencil. Adding the shipping cost of \\$0.03475 per pencil, the total cost per pencil is \\$0.13425. Multiplying by 100 to convert to cents, the average cost per pencil is 13.425 cents. Rounding to the nearest whole number, the average cost per pencil is 13 cents.</think> <answer>13</answer>","ground_truth":"13","rewards":{}}
 ```
 
+= 8 GRPO Experiments
+
 == Problem (`grpo_learning_rate`): 2 points
 
 #figure(image("images/grpo-lr-sweep.png"), caption: "GRPO learning rate sweep")
@@ -280,6 +292,8 @@ The question-only prompt significantly outperforms the R1-Zero prompt. The answe
 Training with the question-only prompt also seems much more stable. Gradient norms are much smaller, entropy shrinks very slowly (rather than spiking and/or collapsing), and the loss remains relatively stable throughout training.
 
 #figure(image("images/grpo-question-only.png"), caption: "GRPO prompt ablation: validation accuracy")
+
+= 9 Leaderboard
 
 == Problem (`leaderboard`): 16 points
 
