@@ -1,0 +1,97 @@
+_wandb:
+    value:
+        cli_version: 0.19.11
+        m:
+            - "1": train_step
+              "6":
+                - 3
+              "7": []
+            - "1": eval_step
+              "6":
+                - 3
+              "7": []
+        python_version: 3.12.10
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 30
+                - 41
+                - 49
+                - 53
+                - 55
+                - 71
+                - 95
+            "2":
+                - 1
+                - 5
+                - 11
+                - 30
+                - 41
+                - 49
+                - 53
+                - 55
+                - 71
+                - 95
+            "3":
+                - 7
+                - 13
+                - 15
+                - 16
+                - 23
+                - 55
+            "4": 3.12.10
+            "5": 0.19.11
+            "6": 4.51.3
+            "8":
+                - 5
+            "12": 0.19.11
+            "13": linux-x86_64
+paths:
+    value:
+        model_output: /data/c-sniderb/a5-alignment/leaderboard/003_mean_4e-5
+        model_path: /data/a5-alignment/models/Qwen2.5-Math-1.5B
+        prompt_template_path: cs336_alignment/prompts/r1_zero.prompt
+        train_examples_path: /data/a5-alignment/MATH/train.jsonl
+        val_examples_path: /data/a5-alignment/MATH/validation.jsonl
+training:
+    value:
+        adam_beta1: 0.9
+        adam_beta2: 0.95
+        adam_eps: 1e-08
+        advantage_eps: 1e-06
+        cliprange: 0.2
+        device: cuda:0
+        dtype: bfloat16
+        epochs_per_rollout_batch: 1
+        eval_before_training: false
+        eval_n_examples: 1024
+        eval_step_interval: 10
+        gpu_memory_utilization: 0.2
+        gradient_accumulation_steps: 128
+        group_size: 8
+        learning_rate: 4e-05
+        log_step_interval: 1
+        loss_type: reinforce_with_baseline
+        max_grad_norm: 1
+        n_grpo_steps: 50
+        normalize_mode: mean
+        old_log_probs_batch_size: 8
+        question_only: false
+        rollout_batch_size: 256
+        sampling_max_tokens: 1024
+        sampling_min_tokens: 4
+        sampling_temperature: 1
+        sampling_top_p: 1
+        seed: 42
+        torch_compile: true
+        train_batch_size: 256
+        use_std_normalization: true
+        vllm_device: cuda:0
+        wandb_entity: brandon-snider-stanford-university
+        wandb_project: cs336-a5
+        wandb_tags:
+            - grpo
+            - leaderboard
+        weight_decay: 0
