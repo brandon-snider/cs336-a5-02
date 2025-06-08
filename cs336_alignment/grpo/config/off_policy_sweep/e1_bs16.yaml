@@ -1,5 +1,5 @@
 paths:
-  model_output: /data/c-sniderb/a5-alignment/grpo-experiments/off_policy_sweep/e1_bs_16
+  model_output: /data/c-sniderb/a5-alignment/grpo-experiments/off_policy_sweep/e1_bs16
 
 training:
   n_grpo_steps: 50

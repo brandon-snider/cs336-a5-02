@@ -1,0 +1,10 @@
+paths:
+  model_output: /data/c-sniderb/a5-alignment/grpo-experiments/group_std_dev/no_std_dev_constant_2e-5
+
+training:
+  learning_rate: 2e-5
+  use_std_normalization: False
+  normalize_mode: constant
+  wandb_tags:
+    - grpo
+    - group_std_dev

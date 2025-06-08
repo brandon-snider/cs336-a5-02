@@ -18,7 +18,7 @@ class TrainingConfig:
     vllm_device: str = "cuda:0"
 
     n_grpo_steps: int = 200
-    learning_rate: float = 2e-5
+    learning_rate: float = 3e-5
     advantage_eps: float = 1e-6
     rollout_batch_size: int = 256
     group_size: int = 8
@@ -58,7 +58,7 @@ class TrainingConfig:
     wandb_tags: list[str] = field(default_factory=lambda: ["grpo"])
 
     eval_before_training: bool = False
-    eval_step_interval: int = 10
+    eval_step_interval: int = 20
     eval_n_examples: int = 1024
 
     old_log_probs_batch_size: int = 8

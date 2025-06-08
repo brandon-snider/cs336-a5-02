@@ -179,6 +179,7 @@ def main(cfg: Config):
 
     eval_step = 0
     grad_descent_step = 0
+    example_idx = 0
 
     if cfg.training.eval_before_training:
         logger.info("Evaluating initial model...")
@@ -188,7 +189,10 @@ def main(cfg: Config):
     # OUTER LOOP: GRPO
 
     for grpo_step in range(cfg.training.n_grpo_steps):
-        grpo_batch = random.sample(grpo_examples, n_prompts_per_rollout_batch)
+        grpo_batch = []
+        for i in range(n_prompts_per_rollout_batch):
+            grpo_batch.append(grpo_examples[(example_idx + i) % len(grpo_examples)])
+        example_idx = (example_idx + n_prompts_per_rollout_batch) % len(grpo_examples)
 
         repeated_rollout_prompts = [
             prompt_template.replace("{question}", ex["problem"])

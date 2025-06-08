@@ -1,5 +1,5 @@
 paths:
-  model_output: /data/c-sniderb/a5-alignment/grpo-experiments/off_policy_sweep/e1_bs256
+  model_output: /data/c-sniderb/a5-alignment/grpo-experiments/off_policy_sweep/e1_bs256_no_std_dev
 
 training:
   n_grpo_steps: 50
@@ -7,6 +7,7 @@ training:
   epochs_per_rollout_batch: 1
   train_batch_size: 256
   loss_type: grpo_clip
+  use_std_normalization: False
   wandb_tags:
     - grpo
     - off-policy-sweep
